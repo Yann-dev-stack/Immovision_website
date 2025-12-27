@@ -1,0 +1,254 @@
+<style>
+/* 🌿 Style global du hub */
+.hub-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+/* Titre & sous-titre */
+.hub-container h1 {
+  color: #168625;
+  font-size: 1.9em;
+  margin-bottom: 10px;
+}
+.hub-container p {
+  color: #333;
+  font-size: 1em;
+  margin-bottom: 25px;
+}
+
+/* Boutons */
+.hub-links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.hub-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #fff;
+  background: #0116CC;
+  padding: 14px 18px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.hub-links a:hover {
+  transform: translateY(-3px);
+  background: #168625;
+}
+
+/* Icônes émojis */
+.hub-links a span {
+  font-size: 1.3em;
+}
+
+/* Message final */
+.footer-message {
+  margin-top: 30px;
+  color: #555;
+  font-size: 0.95em;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .hub-container {
+    padding: 20px 15px;
+  }
+  .hub-links a {
+    font-size: 0.95em;
+    padding: 12px 14px;
+  }
+}
+</style>
+
+<div class="hub-container">
+  <h1>Bienvenue 🌿</h1>
+  <p>Ravi de te retrouver ici ! Découvre tous mes contenus et ressources utiles ci-dessous 👇</p>
+
+  <div class="hub-links">
+    <a href="https://www.anginaturopathe.com/podcasts" target="_blank"><span>🎧</span> Découvrer mes podcasts</a>
+    <a href="https://www.anginaturopathe.com/conscience" target="_blank"><span>📝</span> Faire le questionnaire gratuit</a>
+    <a href="https://www.anginaturopathe.com/posts" target="_blank"><span>📖</span> Lire les articles du blog</a>
+    <a href="https://wa.me/+32485645689" target="_blank"><span>📅</span> Réserver une consultation</a>
+  </div>
+
+  <div class="footer-message">
+    <p>Merci de faire partie de cette belle aventure 💚<br>
+    Prends soin de toi, et à très vite !</p>
+  </div>
+</div>
+
+
+
+
+
+<style>
+  .podcast-btns {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .podcast-btns button {
+    padding: 10px 25px;
+    margin: 0 10px 10px;
+    background-color: #0116CC;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .podcast-btns button:hover {
+    background-color: #0033aa;
+  }
+
+  .podcast-section {
+    display: none;
+  }
+
+  .podcast-section.active {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .podcast-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+
+  .podcast-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .podcast-card img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+  }
+
+  .podcast-card-content {
+    padding: 15px;
+  }
+  .podcast-card-content h2{
+    font-weight: bold;
+  }
+
+  .podcast-subtitle {
+    font-size: 16px;
+    margin: 10px 0;
+    color: #333;
+  }
+
+  .download-btn {
+    display: inline-block;
+    margin-top: 10px;
+    background-color: #168625;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .download-btn:hover {
+    background-color: #0e5c1c;
+  }
+</style>
+
+<!-- BOUTONS DE FILTRES -->
+<div class="podcast-btns">
+  <button onclick="showPodcastSection('stress')">Stress & Reconnexion à soi</button>
+  <button onclick="showPodcastSection('fatigue')">Fatigue & Hormones</button>
+  <button onclick="showPodcastSection('digestion')">Digestion & poids émotionnel</button>
+</div>
+
+<!-- SECTION STRESS -->
+<div id="stress" class="podcast-section active">
+  <div class="podcast-card">
+    <img src="https://img-3.journaldesfemmes.fr/EX8WR9hQSmiJaZGejfatfUDJrsU=/1500x/smart/87b1134ba7604293a3ad2f8f3f3fce41/ccmcms-jdf/31398009.jpg" alt="Podcast Stress 1">
+    <div class="podcast-card-content">
+      <h2>Pour apaiser le mental, écouter le corps et revenir à ton centre.</h2>
+      <h4 class="podcast-subtitle">🎙️ Pourquoi suis-je tant stressée ? Un épisode pour faire le point sur la charge mentale, la pression intérieure et la reconnexion possible.</h4>
+      <a href="https://drive.google.com/file/d/1FTqkyx3Q49_jSmy8Is81njsF47bRLoi3/view?usp=drive_link" class="download-btn" target="_blank" download>Télécharger FR</a>
+      <a href="https://drive.google.com/file/d/1a--EZBR7q2yA0vn21aK-9OpzfzjVBLF9/view?usp=drive_link" class="download-btn" target="_blank" download>Télécharger RO</a>
+    </div>
+  </div>
+  <div class="podcast-card">
+    <img src="https://files.sbcdnsb.com/images/B_pBnAojVTT5ZsoJmBty9g/content/1727427777/3888742/600/proxy-408c1d94464898a98c133cc9419741e5-og20240927-3465316-15ouqxy.png">
+    <div class="podcast-card-content">
+      <h2>Pour renouer avec son être profond, ses valeurs, ses besoins et ses émotions.</h2>
+      <h4 class="podcast-subtitle">🎙️ Pourquoi suis-je tant déconnecté ? Un épisode pour faire le point sur la charge mentale et la reconnexion possible.</h4>
+      <a href="URL_PODCAST_1.mp3" class="download-btn" target="_blank" download>Télécharger FR</a>
+      <a href="URL_PODCAST_1.mp3" class="download-btn" target="_blank" download>Télécharger RO</a>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION FATIGUE -->
+<div id="fatigue" class="podcast-section">
+  <div class="podcast-card">
+    <img src="https://img.freepik.com/photos-gratuite/femme-affaires-fatiguee-couvrant-ses-yeux-yeux-dessines-papier_23-2148813192.jpg?semt=ais_hybrid&w=740&q=80" alt="Podcast Fatigue 1">
+    <div class="podcast-card-content">
+      <h2>Comprendre la fatigue féminine, les déséquilibres hormonaux, et retrouver ton énergie naturellement.</h2>
+      <h4 class="podcast-subtitle">🎙️ Pourquoi la fatigue chronique ? Un épisode pour t’aider à reconnaître les signes d’une fatigue plus profonde qu’un simple "coup de mou".</h4>
+      <a href="URL_PODCAST_3.mp3" class="download-btn" target="_blank" download>Télécharger</a>
+    </div>
+  </div>
+  <div class="podcast-card">
+    <img src="https://www.kernodle.com/wp-content/uploads/2020/06/Kernodle-OB_Types-of-Hormones.jpeg">
+    <div class="podcast-card-content">
+      <h2>Comprendre les hormones féminine, les déséquilibres hormonaux, et retrouver ton énergie naturellement.</h2>
+      <h4 class="podcast-subtitle">️Pourquoi des déséquilibres hormonaux ? Un épisode pour t’aider à reconnaître les signes fréquents.</h4>
+      <a href="URL_PODCAST_3.mp3" class="download-btn" target="_blank" download>Télécharger</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- SECTION DIGESTION -->
+<div id="digestion" class="podcast-section">
+  <div class="podcast-card">
+    <img src="https://md-naturopathie.fr/wp-content/uploads/2024/02/bfc6855c-d7ac-4211-bf1b-d67dca01bf40.jpeg" alt="Podcast digestion 1">
+    <div class="podcast-card-content">
+      <h2>Parce que perdre du poids ou digérer difficilement est souvent lié à bien plus que l’assiette.</h2>
+      <h4 class="podcast-subtitle">🎙️ Pourquoi je n’arrive pas à perdre du poids ? Une invitation à regarder ton rapport au corps avec bienveillance et à comprendre les blocages invisibles.</h4>
+      <a href="URL_PODCAST_5.mp3" class="download-btn" target="_blank" download>Télécharger</a>
+    </div>
+  </div>
+  <div class="podcast-card">
+    <img src="https://parlonssciences.ca/sites/default/files/2021-10/human-digestive-system-anatomy.jpg">
+    <div class="podcast-card-content">
+      <h2>Parce que digérer difficilement est souvent lié à bien plus que l’assiette.</h2>
+      <h4 class="podcast-subtitle">️Pourquoi je connais souvent une indigestion ? Une invitation à regarder ton rapport au corps avec bienveillance et à comprendre les blocages invisibles.</h4>
+      <a href="URL_PODCAST_5.mp3" class="download-btn" target="_blank" download>Télécharger</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showPodcastSection(id) {
+    const sections = document.querySelectorAll('.podcast-section');
+    sections.forEach(section => section.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+</script>
