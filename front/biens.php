@@ -47,16 +47,6 @@ function limiterMots($texte, $limite = 20)
         }
     </script>
     <style>
-        #filtre {
-            padding-left: 8rem;
-            padding-right: 8rem;
-        }
-
-        #liste-biens {
-            padding-left: 8rem;
-            padding-right: 8rem;
-        }
-
         .filter-btn {
             background-color: grey;
             transition: background-color 0.3s ease;
@@ -136,16 +126,20 @@ function limiterMots($texte, $limite = 20)
     <?php include 'header.html'; ?>
 
     <!-- Hero section -->
-    <section class="hero-section flex items-center justify-center text-center text-white">
-        <div class="container mx-auto px-6 container-padding">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">Nos <span class="text-primary">Biens Exclusifs</span></h1>
-            <p class="text-xl md:text-2xl mb-8">Découvrez notre sélection de propriétés avec visites virtuelles 360°</p>
+    <section class="hero-section flex items-center justify-center text-center text-white min-h-[60vh] md:min-h-[80vh]">
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32">
+            <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-6">
+                Nos <span class="text-primary">Biens Exclusifs</span>
+            </h1>
+            <p class="text-base sm:text-xl md:text-2xl max-w-3xl mx-auto">
+                Découvrez notre sélection de propriétés avec visites virtuelles 360°
+            </p>
         </div>
     </section>
 
     <!-- Filtres -->
     <section class="py-12 bg-white" id="filtre">
-        <div class="container mx-auto px-6">
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32">
             <div class="bg-gray-50 p-6 rounded-xl shadow-md">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div>
@@ -176,130 +170,143 @@ function limiterMots($texte, $limite = 20)
 
     <!-- Liste des Biens -->
     <section class="py-12 bg-gray-100" id="liste-biens">
-        <div class="container mx-auto px-6">
-            <?php if (empty($biens)): ?>
-                <div class="text-center py-12">
-                    <i class="fas fa-home text-5xl text-gray-400 mb-4"></i>
-                    <h3 class="text-2xl font-bold text-gray-700">Aucun bien disponible actuellement</h3>
-                    <p class="text-gray-500 mt-2">Nos équipes sont en train d'ajouter de nouvelles propriétés.</p>
-                </div>
-            <?php else: ?>
-                <div class="flex justify-center gap-4 mb-8">
-                    <button class="filter-btn bg-gray-500 text-white px-6 py-2 rounded-full font-semibold"
-                        data-filter="all">
-                        Tous
-                    </button>
-                    <button class="filter-btn bg-gray-600 text-white px-6 py-2 rounded-full font-semibold"
-                        data-filter="location">
-                        À louer
-                    </button>
-                    <button class="filter-btn bg-gray-500 text-white px-6 py-2 rounded-full font-semibold"
-                        data-filter="vente">
-                        À vendre
-                    </button>
-                </div>
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32">
+            <div id="biensContainer"
+                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center">
+                <?php if (empty($biens)): ?>
+                    <div class="text-center py-12">
+                        <i class="fas fa-home text-5xl text-gray-400 mb-4"></i>
+                        <h3 class="text-2xl font-bold text-gray-700">Aucun bien disponible actuellement</h3>
+                        <p class="text-gray-500 mt-2">Nos équipes sont en train d'ajouter de nouvelles propriétés.</p>
+                    </div>
+                <?php else: ?>
+                    <div class="flex flex-wrap justify-center gap-4 mb-8">
+                        <button class="filter-btn bg-gray-500 text-white px-6 py-2 rounded-full font-semibold"
+                            data-filter="all">
+                            Tous
+                        </button>
+                        <button class="filter-btn bg-gray-600 text-white px-6 py-2 rounded-full font-semibold"
+                            data-filter="location">
+                            À louer
+                        </button>
+                        <button class="filter-btn bg-gray-500 text-white px-6 py-2 rounded-full font-semibold"
+                            data-filter="vente">
+                            À vendre
+                        </button>
+                    </div>
 
-                <div id="biensContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
-                    <?php foreach ($biens as $bien): ?>
-                        <?php
-                        $images = !empty($bien['image']) ? explode(',', $bien['image']) : [];
-                        $firstImagePath = !empty($images) ? trim($images[0]) : '';
-                        $fullImagePath = UPLOAD_PATH . $firstImagePath;
-
-                        $imageExists = !empty($firstImagePath) && file_exists($fullImagePath);
-                        ?>
-
-                        <div class="bien-card relative max-w-sm w-full bg-white rounded-xl overflow-hidden shadow-md transform transition hover:scale-105"
-                            data-titre="<?= strtolower(htmlspecialchars($bien['titre'])) ?>"
-                            data-ville="<?= strtolower(htmlspecialchars($bien['ville'])) ?>"
-                            data-type="<?= htmlspecialchars($bien['type']) ?>"
-                            data-prix="<?= $bien['prix'] ?>"
-                            data-nature="<?= htmlspecialchars($bien['nature'] ?? '') ?>"
-                            data-date="<?= htmlspecialchars($bien['created_at'] ?? '') ?>">
-
-                            <?php if (($bien['nature'] ?? '') === 'location'): ?>
-                                <span class="absolute top-4 left-4 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
-                                    À louer
-                                </span>
-                            <?php elseif (($bien['nature'] ?? '') === 'vente'): ?>
-                                <span class="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
-                                    À vendre
-                                </span>
-                            <?php endif; ?>
-
-                            <!--Badge nouveau pour un bien immobilier-->
+                    <div id="biensContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
+                        <?php foreach ($biens as $bien): ?>
                             <?php
-                            $isNew = false;
-                            if (!empty($bien['created_at'])) {
-                                $dateBien = new DateTime($bien['created_at']);
-                                $now = new DateTime();
-                                $diff = $now->diff($dateBien)->days;
-                                $isNew = $diff <= 7;
-                            }
+                            $images = !empty($bien['image']) ? explode(',', $bien['image']) : [];
+                            $firstImagePath = !empty($images) ? trim($images[0]) : '';
+                            $fullImagePath = UPLOAD_PATH . $firstImagePath;
+
+                            $imageExists = !empty($firstImagePath) && file_exists($fullImagePath);
                             ?>
 
-                            <?php if ($isNew): ?>
-                                <span class="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow animate-pulse">
-                                    Nouveau
-                                </span>
-                            <?php endif; ?>
+                            <div class="bien-card relative max-w-[360px] w-full bg-white rounded-xl overflow-hidden shadow-md transform transition hover:scale-105"
+                                data-titre="<?= strtolower(htmlspecialchars($bien['titre'])) ?>"
+                                data-ville="<?= strtolower(htmlspecialchars($bien['ville'])) ?>"
+                                data-type="<?= htmlspecialchars($bien['type']) ?>"
+                                data-prix="<?= $bien['prix'] ?>"
+                                data-nature="<?= htmlspecialchars($bien['nature'] ?? '') ?>"
+                                data-date="<?= htmlspecialchars($bien['created_at'] ?? '') ?>">
 
-                            <!--Fin Badge nouveau-->
-
-                            <?php if ($imageExists): ?>
-                                <img src="<?= $fullImagePath ?>" alt="<?= htmlspecialchars($bien['titre']) ?>" class="w-full h-48 object-cover">
-                            <?php else: ?>
-                                <div class="w-full h-48 img-placeholder">
-                                    <i class="fas fa-image"></i>
-                                </div>
-                            <?php endif; ?>
-
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2"><?= htmlspecialchars($bien['titre']) ?></h3>
-                                <p class="text-gray-600 mt-2 text-sm">
-                                    <?= limiterMots($bien['description'], 18) ?>
-                                </p>
-                                <p class="text-gray-600">
-                                    <?= htmlspecialchars($bien['ville']) ?> -
-                                    <?= htmlspecialchars($bien['surface']) ?>m² -
-                                    <?= htmlspecialchars($bien['pieces']) ?> pièces
-                                </p>
-                                <h4 class="text-xl font-400 mb-2" style="color: #FFA500;">• <?= htmlspecialchars($bien['type']) ?></h4>
-                                <div class="flex justify-between items-center mt-4">
-                                    <span class="text-primary font-semibold">
-                                        <?= number_format($bien['prix'], 0, ',', ' ') ?>€
+                                <?php if (($bien['nature'] ?? '') === 'location'): ?>
+                                    <span class="absolute top-4 left-4 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+                                        À louer
                                     </span>
-                                    <a href="details.php?id=<?= $bien['id'] ?>"
-                                        class="text-white bg-primary hover:bg-secondary px-4 py-2 rounded-full transition">
-                                        Détails
-                                    </a>
-                                </div>
-                                <?php if (!empty($bien['visite_virtuelle_url'])): ?>
-                                    <a href="<?= htmlspecialchars($bien['visite_virtuelle_url']) ?>" target="_blank"
-                                        class="block mt-3 text-primary text-sm hover:underline">
-                                        <i class="fas fa-vr-cardboard mr-1"></i> Visite Virtuelle
-                                    </a>
+                                <?php elseif (($bien['nature'] ?? '') === 'vente'): ?>
+                                    <span class="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+                                        À vendre
+                                    </span>
                                 <?php endif; ?>
+
+                                <!--Badge nouveau pour un bien immobilier-->
+                                <?php
+                                $isNew = false;
+                                if (!empty($bien['created_at'])) {
+                                    $dateBien = new DateTime($bien['created_at']);
+                                    $now = new DateTime();
+                                    $diff = $now->diff($dateBien)->days;
+                                    $isNew = $diff <= 7;
+                                }
+                                ?>
+
+                                <?php if ($isNew): ?>
+                                    <span class="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow animate-pulse">
+                                        Nouveau
+                                    </span>
+                                <?php endif; ?>
+
+                                <!--Fin Badge nouveau-->
+
+                                <?php if ($imageExists): ?>
+                                    <img src="<?= $fullImagePath ?>" alt="<?= htmlspecialchars($bien['titre']) ?>" class="w-full h-48 object-cover">
+                                <?php else: ?>
+                                    <div class="w-full h-48 img-placeholder">
+                                        <i class="fas fa-image"></i>
+                                    </div>
+                                <?php endif; ?>
+
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold mb-2"><?= htmlspecialchars($bien['titre']) ?></h3>
+                                    <p class="text-gray-600 mt-2 text-sm">
+                                        <?= limiterMots($bien['description'], 18) ?>
+                                    </p>
+                                    <p class="text-gray-600">
+                                        <?= htmlspecialchars($bien['ville']) ?> -
+                                        <?= htmlspecialchars($bien['surface']) ?>m² -
+                                        <?= htmlspecialchars($bien['pieces']) ?> pièces
+                                    </p>
+                                    <h4 class="text-xl font-400 mb-2" style="color: #FFA500;">• <?= htmlspecialchars($bien['type']) ?></h4>
+                                    <div class="flex justify-between items-center mt-4">
+                                        <span class="text-primary font-semibold">
+                                            <?= number_format($bien['prix'], 0, ',', ' ') ?>€
+                                        </span>
+                                        <a href="details.php?id=<?= $bien['id'] ?>"
+                                            class="text-white bg-primary hover:bg-secondary px-4 py-2 rounded-full transition">
+                                            Détails
+                                        </a>
+                                    </div>
+                                    <?php if (!empty($bien['visite_virtuelle_url'])): ?>
+                                        <a href="<?= htmlspecialchars($bien['visite_virtuelle_url']) ?>" target="_blank"
+                                            class="block mt-3 text-primary text-sm hover:underline">
+                                            <i class="fas fa-vr-cardboard mr-1"></i> Visite Virtuelle
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
                             </div>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-            <?php endif; ?>
-        </div>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+            </div>
     </section>
 
     <!-- Newsletter -->
     <section class="py-16 bg-primary text-white">
-        <div class="container mx-auto px-6 container-padding text-center">
-            <h2 class="text-3xl font-bold mb-4">Ne ratez aucun nouveau bien</h2>
-            <p class="max-w-2xl mx-auto mb-8">Abonnez-vous pour recevoir en avant-première nos nouvelles propriétés</p>
-            <form class="max-w-md mx-auto flex">
-                <input type="email" placeholder="Votre email"
-                    class="flex-grow px-4 py-3 rounded-l-full text-dark focus:outline-none">
-                <button class="bg-dark hover:bg-gray-800 px-6 py-3 rounded-r-full transition">S'abonner</button>
-            </form>
-        </div>
-    </section>
+    <div class="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 text-center">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-4">
+            Ne ratez aucun nouveau bien
+        </h2>
+        <p class="max-w-2xl mx-auto mb-8 text-sm sm:text-base">
+            Abonnez-vous pour recevoir en avant-première nos nouvelles propriétés
+        </p>
+
+        <form class="max-w-md mx-auto flex flex-col sm:flex-row gap-3">
+            <input
+                type="email"
+                placeholder="Votre email"
+                class="flex-grow px-4 py-3 rounded-full sm:rounded-l-full sm:rounded-r-none text-dark focus:outline-none">
+            <button
+                class="bg-dark hover:bg-gray-800 px-6 py-3 rounded-full sm:rounded-r-full transition">
+                S'abonner
+            </button>
+        </form>
+    </div>
+</section>
+
 
     <!-- Footer -->
     <?php include 'footer.html'; ?>
