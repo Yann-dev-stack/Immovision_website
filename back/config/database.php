@@ -1,8 +1,8 @@
 <?php
-$host = 'localhost'; // ou l'adresse du serveur de base de données
-$dbname = 'immovision_db';
-$username = 'root';  // ton nom d'utilisateur MySQL
-$password = '';      // ton mot de passe MySQL
+$host = 'b7ru1e4om70hszc3r7sq-mysql.services.clever-cloud.com'; // ou l'adresse du serveur de base de données
+$dbname = 'b7ru1e4om70hszc3r7sq';
+$username = 'u9mn5rcp0csqpt2f';  // ton nom d'utilisateur MySQL
+$password = '0MCa85Ohn4aeKctMOHJS';      // ton mot de passe MySQL
 
 try {
     // Créer la connexion PDO
