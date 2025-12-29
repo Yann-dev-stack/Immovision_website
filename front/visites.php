@@ -22,14 +22,32 @@
         }
     </script>
     <style>
-         #technologie {
+        #technologie,
+        #pk {
             padding-left: 8rem;
             padding-right: 8rem;
         }
-         #pk {
-            padding-left: 8rem;
-            padding-right: 8rem;
+
+        /* Tablette */
+        @media (max-width: 1024px) {
+
+            #technologie,
+            #pk {
+                padding-left: 3rem;
+                padding-right: 3rem;
+            }
         }
+
+        /* Mobile */
+        @media (max-width: 640px) {
+
+            #technologie,
+            #pk {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+
         body {
             padding: 0;
         }
@@ -92,11 +110,24 @@
         .pulse-animation {
             animation: pulse 2s infinite;
         }
-        .nos-biens{
+
+        .nos-biens {
             align-items: center;
             text-align: center;
             justify-content: center;
             margin-top: 2rem;
+        }
+
+        /* Animation scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -117,9 +148,11 @@
     <!-- Section technologie -->
     <section class="py-16 bg-white" id="technologie">
         <div class="container mx-auto px-6 container-padding">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-dark mb-16">Notre <span class="text-primary">Technologie</span></h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-dark mb-16 reveal">
+                Notre <span class="text-primary">Technologie</span>
+            </h2>
 
-            <div class="flex flex-col lg:flex-row items-center">
+            <div class="flex flex-col lg:flex-row items-center reveal">
                 <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pr-10">
                     <div class="bg-gray-50 p-8 rounded-xl">
                         <div class="flex items-center mb-6">
@@ -151,9 +184,11 @@
     <!-- Section avantages -->
     <section class="py-16 bg-white" id="pk">
         <div class="container mx-auto px-6 container-padding">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-dark mb-16">Pourquoi choisir une <span class="text-primary">visite virtuelle</span> ?</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-dark mb-16 reveal">
+                Pourquoi choisir une <span class="text-primary">visite virtuelle</span> ?
+            </h2>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div class="bg-primary bg-opacity-10 p-8 rounded-xl reveal">
                 <div class="bg-primary bg-opacity-10 p-8 rounded-xl">
                     <div class="text-primary text-4xl mb-4">
                         <i class="fas fa-clock"></i>
@@ -250,6 +285,24 @@
                 video.currentTime = 0;
             }
         });
+    </script>
+
+    <script>
+        const reveals = document.querySelectorAll(".reveal");
+
+        const observer = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                    }
+                });
+            }, {
+                threshold: 0.15
+            }
+        );
+
+        reveals.forEach(reveal => observer.observe(reveal));
     </script>
 
 </body>
