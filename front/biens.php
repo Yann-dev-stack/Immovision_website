@@ -345,14 +345,14 @@ function limiterMots($texte, $limite = 20)
 
                 <div id="biensContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
                     <?php foreach ($biens as $bien): ?>
-                        <?php
-                        $images = !empty($bien['image']) ? explode(',', $bien['image']) : [];
-                        $firstImagePath = !empty($images) ? trim($images[0]) : '';
-                        $fullImagePath = UPLOAD_PATH . $firstImagePath;
+                        //<?php
+                        //$images = !empty($bien['image']) ? explode(',', $bien['image']) : [];
+                        //$firstImagePath = !empty($images) ? trim($images[0]) : '';
+                        //$fullImagePath = UPLOAD_PATH . $firstImagePath;
 
-                        $imageExists = !empty($firstImagePath) && file_exists($fullImagePath);
-                        ?>
-
+                        //$imageExists = !empty($firstImagePath) && file_exists($fullImagePath);
+                        //?>
+                        <img src="../images/appartement.jpg" alt="">
                         <div class="bien-card relative max-w-sm w-full bg-white rounded-xl overflow-hidden shadow-md transform transition hover:scale-105"
                             data-titre="<?= strtolower(htmlspecialchars($bien['titre'])) ?>"
                             data-ville="<?= strtolower(htmlspecialchars($bien['ville'])) ?>"
