@@ -346,13 +346,12 @@ function limiterMots($texte, $limite = 20)
                 <div id="biensContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
                     <?php foreach ($biens as $bien): ?>
                         <?php
+                        // On extrait le nom de l'image depuis la base de données
                         $images = !empty($bien['image']) ? explode(',', $bien['image']) : [];
                         $firstImagePath = !empty($images) ? trim($images[0]) : '';
-                        $fullImagePath = UPLOAD_PATH . $firstImagePath;
-
-                        $imageExists = !empty($firstImagePath) && file_exists($fullImagePath);
+                        // On prépare l'URL de l'image sans vérifier si le fichier existe physiquement
+                        $urlImage = "uploads/biens/" . $firstImagePath;
                         ?>
-
                         <div class="bien-card relative max-w-sm w-full bg-white rounded-xl overflow-hidden shadow-md transform transition hover:scale-105"
                             data-titre="<?= strtolower(htmlspecialchars($bien['titre'])) ?>"
                             data-ville="<?= strtolower(htmlspecialchars($bien['ville'])) ?>"
@@ -371,6 +370,10 @@ function limiterMots($texte, $limite = 20)
                                 </span>
                             <?php endif; ?>
 
+                            <img src="<?= $urlImage ?>"
+                                alt="<?= htmlspecialchars($bien['titre']) ?>"
+                                class="w-full h-48 object-cover"
+                                onerror="this.onerror=null; this.src='https://placehold.co/600x400?text=Image+Non+Trouvée';">
                             <!--Badge nouveau pour un bien immobilier-->
                             <?php
                             $isNew = false;
