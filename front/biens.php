@@ -8,7 +8,7 @@ try {
     die("Erreur lors de la récupération des biens : " . $e->getMessage());
 }
 
-define('UPLOAD_PATH', '../uploads/biens/');
+define('UPLOAD_PATH', 'uploads/biens/');
 
 function limiterMots($texte, $limite = 20)
 {
