@@ -206,8 +206,123 @@ define('UPLOAD_PATH', '../uploads/biens/');
             .see-more {
                 margin-top: 3rem;
             }
-            #vv h3{
+
+            #vv h3 {
                 font-size: 10px;
+            }
+        }
+
+        /* =========================
+   TABLETTE (≤1024px)
+   ========================= */
+        @media (max-width: 1024px) {
+
+            #visites {
+                padding-top: 4rem;
+                padding-bottom: 4rem;
+            }
+
+            #visites h2 {
+                font-size: 2.5rem;
+            }
+
+            #visites p {
+                font-size: 1.05rem;
+            }
+
+            /* Conteneur visite virtuelle */
+            .virtual-tour-container {
+                height: 380px;
+            }
+
+            #vv h3 {
+                font-size: 2.2rem !important;
+            }
+
+            #vv p {
+                font-size: 1rem !important;
+            }
+
+            /* Cartes avantages */
+            #visites .grid {
+                gap: 1.5rem;
+            }
+        }
+
+
+        /* =========================
+   MOBILE (≤640px)
+   ========================= */
+        @media (max-width: 640px) {
+
+            #visites {
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+
+            /* Titres */
+            #visites h2 {
+                font-size: 2rem;
+                line-height: 1.25;
+            }
+
+            #visites p {
+                font-size: 0.95rem;
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+
+            /* Conteneur 360° */
+            .virtual-tour-container {
+                height: 260px;
+                margin-bottom: 2rem;
+            }
+
+            #vv i {
+                font-size: 3rem;
+                margin-bottom: 1rem;
+            }
+
+            #vv h3 {
+                font-size: 1.4rem !important;
+                line-height: 1.3;
+            }
+
+            #vv p {
+                font-size: 0.85rem !important;
+                margin-top: 0.5rem;
+            }
+
+            #vv button {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.95rem;
+                width: 100%;
+                max-width: 240px;
+                margin: 1.2rem auto 0;
+                display: block;
+            }
+
+            /* Grille avantages */
+            #visites .grid {
+                gap: 1.2rem;
+                margin-top: 2rem;
+            }
+
+            #visites .grid>div {
+                padding: 1.4rem;
+                text-align: center;
+            }
+
+            #visites .grid i {
+                font-size: 2.2rem;
+            }
+
+            #visites .grid h3 {
+                font-size: 1.1rem;
+            }
+
+            #visites .grid p {
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -355,7 +470,7 @@ define('UPLOAD_PATH', '../uploads/biens/');
                 <div class="absolute inset-0 flex items-center justify-center" style="background-color:black">
                     <div class="text-center" id="vv">
                         <i class="fas fa-vr-cardboard text-6xl text-gray-400 mb-4"></i>
-                        <h3 class="text-2xl font-bold text-gray-600" style="color: white; font-size:3rem" >Visite Virtuelle 360° Interactive</h3>
+                        <h3 class="text-2xl font-bold text-gray-600" style="color: white; font-size:3rem">Visite Virtuelle 360° Interactive</h3>
                         <p class="text-gray-500 mt-2" style="color: #000000ff;">Tournez, zoomez et explorez comme si vous y étiez</p>
                         <button
                             class="mt-6 bg-primary hover:bg-secondary text-white font-bold py-3 px-8 rounded-full transition pulse-animation">
