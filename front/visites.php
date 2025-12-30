@@ -146,6 +146,10 @@
    RESPONSIVE MOBILE
    ========================= */
         @media (max-width: 640px) {
+            *{
+                margin: 0;
+                padding: 0;
+            }
 
             /* Sections */
             #technologie,
