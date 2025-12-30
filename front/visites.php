@@ -288,7 +288,7 @@
         <div class="container mx-auto px-6 container-padding">
             <h2 class="text-3xl md:text-4xl font-bold text-center text-dark mb-16">Pourquoi choisir une <span class="text-primary">visite virtuelle</span> ?</h2>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10" style="padding-left: 1.5rem; padding-right:1.5rem;">
                 <div class="bg-primary bg-opacity-10 p-8 rounded-xl">
                     <div class="text-primary text-4xl mb-4">
                         <i class="fas fa-clock"></i>
