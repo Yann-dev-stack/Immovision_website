@@ -294,11 +294,11 @@ define('UPLOAD_PATH', '../uploads/biens/');
             }
 
             #vv button {
-                padding: 0.7rem 1.5rem;
+                padding: 0.5rem 1rem;
                 font-size: 0.95rem;
-                width: 100%;
-                max-width: 240px;
-                margin: 1.2rem auto 0;
+                width: 70%;
+                max-width: 170px;
+                margin: 1.5rem auto 0;
                 display: block;
             }
 
