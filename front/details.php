@@ -245,6 +245,171 @@ $images = !empty($bien['image']) ? explode(',', $bien['image']) : [];
                 transform: translateY(0);
             }
         }
+
+        /* =========================
+   RESPONSIVE TABLETTE
+   ========================= */
+        @media (max-width: 1024px) {
+
+            /* Container global */
+            .container {
+                padding-left: 2.5rem;
+                padding-right: 2.5rem;
+            }
+
+            /* Hero */
+            .property-hero {
+                height: 45vh;
+                padding-left: 2.5rem;
+                padding-right: 2.5rem;
+            }
+
+            .property-hero h1 {
+                font-size: 2.8rem;
+            }
+
+            /* Text blocs */
+            .text-ini {
+                width: 85%;
+            }
+
+            .text-ini h2 {
+                font-size: 2.1rem;
+            }
+
+            .text-ini p {
+                font-size: 1.2rem;
+            }
+
+            /* Galerie & contenu */
+            section .container[style*="80%"] {
+                width: 100% !important;
+            }
+
+            /* Slider images */
+            .splide__slide img {
+                height: 300px;
+            }
+
+            /* Vidéo */
+            .video-container iframe {
+                height: 320px;
+            }
+        }
+
+
+        /* =========================
+   RESPONSIVE MOBILE
+   ========================= */
+        @media (max-width: 640px) {
+
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                overflow-x: hidden;
+            }
+
+            /* Container = plein écran */
+            .container {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+                max-width: 100%;
+            }
+
+            /* Hero */
+            .property-hero {
+                height: auto;
+                min-height: 70vh;
+                padding: 2rem 1rem;
+            }
+
+            .property-hero .flex {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+
+            .property-hero h1 {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+
+            .property-hero p {
+                font-size: 1rem;
+            }
+
+            .property-hero .text-right {
+                text-align: left;
+                width: 100%;
+            }
+
+            /* Text blocs */
+            .text-bloc {
+                padding: 0 1rem;
+            }
+
+            .text-ini {
+                width: 100%;
+            }
+
+            .text-ini h2 {
+                font-size: 1.7rem;
+            }
+
+            .text-ini p {
+                font-size: 1rem;
+                margin-top: 1rem;
+            }
+
+            /* Galerie */
+            .splide__slide img {
+                height: 220px;
+                border-radius: 10px;
+            }
+
+            /* Vidéo */
+            .video-container {
+                margin: 20px 1rem;
+                padding: 10px;
+            }
+
+            .video-container iframe {
+                height: 220px;
+            }
+
+            /* Sections */
+            .property-section {
+                padding: 1.25rem;
+                margin-bottom: 25px;
+            }
+
+            .property-section h2 {
+                font-size: 1.3rem;
+            }
+
+            /* Grilles */
+            .grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Colonne contact */
+            .contact-card {
+                position: static;
+                margin-top: 2rem;
+            }
+
+            /* Boutons */
+            .contact-card a {
+                padding: 0.9rem;
+                font-size: 1rem;
+            }
+
+            /* Map */
+            iframe[src*="google.com/maps"] {
+                height: 260px !important;
+            }
+        }
     </style>
 
 </head>
