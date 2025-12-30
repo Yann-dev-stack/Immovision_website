@@ -146,10 +146,6 @@
    RESPONSIVE MOBILE
    ========================= */
         @media (max-width: 640px) {
-            *{
-                margin: 0;
-                padding: 0;
-            }
 
             /* Sections */
             #technologie,
@@ -218,6 +214,35 @@
                 height: 220px;
             }
         }
+
+        /* =========================
+   FIX ESPACE GLOBAL MOBILE
+   ========================= */
+        @media (max-width: 640px) {
+
+            html,
+            body {
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                overflow-x: hidden;
+            }
+
+            /* Supprime le padding horizontal global */
+            .container,
+            .container-padding {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                max-width: 100% !important;
+            }
+
+            /* Sections qui ajoutaient du padding */
+            #technologie,
+            #pk {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+        }
     </style>
 </head>
 
@@ -225,7 +250,7 @@
     <?php include 'header.html'; ?>
     <!-- Hero spécifique -->
     <section class="hero-section flex items-center justify-center text-center text-white">
-        <div class="container mx-auto px-6 container-padding">
+        <div class="max-w-7xl mx-auto px-4">
             <h1 class="text-4xl md:text-6xl font-bold mb-6">Visites <span class="text-primary">Virtuelles 360°</span></h1>
             <p class="text-xl md:text-2xl mb-8">Explorez les propriétés comme si vous y étiez, depuis chez vous</p>
             <button class="bg-primary hover:bg-secondary text-white font-bold py-3 px-8 rounded-full transition pulse-animation">
