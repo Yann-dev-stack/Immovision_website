@@ -296,10 +296,13 @@ define('UPLOAD_PATH', '../uploads/biens/');
             #vv button {
                 padding: 0.5rem 1rem;
                 font-size: 0.95rem;
-                width: 70%;
+                width: 100%;
                 max-width: 170px;
                 margin: 1.5rem auto 0;
                 display: block;
+            }
+            #vv button i{
+                font-size: 1.5rem;
             }
 
             /* Grille avantages */
