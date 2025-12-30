@@ -22,30 +22,14 @@
         }
     </script>
     <style>
-        #technologie,
-        #pk {
+        #technologie {
             padding-left: 8rem;
             padding-right: 8rem;
         }
 
-        /* Tablette */
-        @media (max-width: 1024px) {
-
-            #technologie,
-            #pk {
-                padding-left: 3rem;
-                padding-right: 3rem;
-            }
-        }
-
-        /* Mobile */
-        @media (max-width: 640px) {
-
-            #technologie,
-            #pk {
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
-            }
+        #pk {
+            padding-left: 8rem;
+            padding-right: 8rem;
         }
 
         body {
@@ -118,16 +102,117 @@
             margin-top: 2rem;
         }
 
-        /* Animation scroll */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+        /* =========================
+   RESPONSIVE TABLETTE
+   ========================= */
+        @media (max-width: 1024px) {
+
+            /* Sections avec gros padding */
+            #technologie,
+            #pk {
+                padding-left: 3rem;
+                padding-right: 3rem;
+            }
+
+            /* Hero */
+            .hero-section {
+                height: 70vh;
+                padding: 2rem 1.5rem;
+            }
+
+            .hero-section h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-section p {
+                font-size: 1.2rem;
+            }
+
+            /* Cartes */
+            .bg-primary.bg-opacity-10,
+            .bg-gray-50 {
+                padding: 2rem;
+            }
+
+            /* Bouton hero */
+            .hero-section button {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
         }
 
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+
+        /* =========================
+   RESPONSIVE MOBILE
+   ========================= */
+        @media (max-width: 640px) {
+
+            /* Sections */
+            #technologie,
+            #pk {
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
+            }
+
+            section.py-16 {
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+
+            /* Hero */
+            .hero-section {
+                height: auto;
+                min-height: 85vh;
+                padding: 3rem 1rem;
+            }
+
+            .hero-section h1 {
+                font-size: 2.1rem;
+                line-height: 1.2;
+            }
+
+            .hero-section p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-section button {
+                width: 100%;
+                padding: 0.9rem;
+                font-size: 1rem;
+            }
+
+            /* Titres sections */
+            h2 {
+                font-size: 1.9rem !important;
+                margin-bottom: 2.5rem !important;
+            }
+
+            /* Cards technologie */
+            .bg-gray-50 {
+                padding: 1.5rem;
+            }
+
+            .bg-gray-50 h3 {
+                font-size: 1.1rem;
+            }
+
+            /* Avantages */
+            .bg-primary.bg-opacity-10 {
+                padding: 1.5rem;
+            }
+
+            /* Bouton "nos biens" */
+            .nos-biens button {
+                width: 90%;
+                padding: 0.9rem;
+                font-size: 1rem;
+            }
+
+            /* Vidéo modale */
+            #videoModal video {
+                height: 220px;
+            }
         }
     </style>
 </head>
@@ -148,11 +233,9 @@
     <!-- Section technologie -->
     <section class="py-16 bg-white" id="technologie">
         <div class="container mx-auto px-6 container-padding">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-dark mb-16 reveal">
-                Notre <span class="text-primary">Technologie</span>
-            </h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-dark mb-16">Notre <span class="text-primary">Technologie</span></h2>
 
-            <div class="flex flex-col lg:flex-row items-center reveal">
+            <div class="flex flex-col lg:flex-row items-center">
                 <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pr-10">
                     <div class="bg-gray-50 p-8 rounded-xl">
                         <div class="flex items-center mb-6">
@@ -184,11 +267,9 @@
     <!-- Section avantages -->
     <section class="py-16 bg-white" id="pk">
         <div class="container mx-auto px-6 container-padding">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-dark mb-16 reveal">
-                Pourquoi choisir une <span class="text-primary">visite virtuelle</span> ?
-            </h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-dark mb-16">Pourquoi choisir une <span class="text-primary">visite virtuelle</span> ?</h2>
 
-            <div class="bg-primary bg-opacity-10 p-8 rounded-xl reveal">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div class="bg-primary bg-opacity-10 p-8 rounded-xl">
                     <div class="text-primary text-4xl mb-4">
                         <i class="fas fa-clock"></i>
@@ -285,24 +366,6 @@
                 video.currentTime = 0;
             }
         });
-    </script>
-
-    <script>
-        const reveals = document.querySelectorAll(".reveal");
-
-        const observer = new IntersectionObserver(
-            entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("active");
-                    }
-                });
-            }, {
-                threshold: 0.15
-            }
-        );
-
-        reveals.forEach(reveal => observer.observe(reveal));
     </script>
 
 </body>
