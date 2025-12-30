@@ -369,11 +369,6 @@ function limiterMots($texte, $limite = 20)
                                     À vendre
                                 </span>
                             <?php endif; ?>
-
-                            <img src="<?= $urlImage ?>"
-                                alt="<?= htmlspecialchars($bien['titre']) ?>"
-                                class="w-full h-48 object-cover"
-                                onerror="this.onerror=null; this.src='https://placehold.co/600x400?text=Image+Non+Trouvée';">
                             <!--Badge nouveau pour un bien immobilier-->
                             <?php
                             $isNew = false;
@@ -402,11 +397,12 @@ function limiterMots($texte, $limite = 20)
                             $urlFinale = "uploads/biens/" . $nomImage;
                             ?>
 
+                            <p style="color: red;">DEBUG: <?= $urlFinale ?></p>
                             <img src="<?= $urlFinale ?>"
                                 alt="<?= htmlspecialchars($bien['titre']) ?>"
                                 class="w-full h-48 object-cover"
                                 onerror="this.onerror=null; this.src='https://placehold.co/600x400?text=Image+Indisponible';">
-                                
+
                             <div class="p-6">
                                 <h3 class="text-xl font-bold mb-2"><?= htmlspecialchars($bien['titre']) ?></h3>
                                 <p class="text-gray-600 mt-2 text-sm">
