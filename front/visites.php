@@ -148,16 +148,6 @@
         @media (max-width: 640px) {
 
             /* Sections */
-            #technologie,
-            #pk {
-                padding-left: 1.25rem;
-                padding-right: 1.25rem;
-            }
-
-            section.py-16 {
-                padding-top: 3rem;
-                padding-bottom: 3rem;
-            }
 
             /* Hero */
             .hero-section {
@@ -223,9 +213,9 @@
             html,
             body {
                 width: 100%;
-                margin: 0;
-                padding: 0;
-                overflow-x: hidden;
+                margin: 0 !important;
+                padding: 0 !important;
+                overflow-x: hidden !important;
             }
 
             /* Supprime le padding horizontal global */
