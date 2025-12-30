@@ -393,14 +393,20 @@ function limiterMots($texte, $limite = 20)
 
                             <!--Fin Badge nouveau-->
 
-                            <?php if ($imageExists): ?>
-                                <img src="<?= $fullImagePath ?>" alt="<?= htmlspecialchars($bien['titre']) ?>" class="w-full h-48 object-cover">
-                            <?php else: ?>
-                                <div class="w-full h-48 img-placeholder">
-                                    <i class="fas fa-image"></i>
-                                </div>
-                            <?php endif; ?>
+                            <?php
+                            // 1. Extraire le nom du fichier image
+                            $imagesList = !empty($bien['image']) ? explode(',', $bien['image']) : [];
+                            $nomImage = !empty($imagesList) ? trim($imagesList[0]) : '';
 
+                            // 2. Créer l'URL (le chemin pour le navigateur)
+                            $urlFinale = "uploads/biens/" . $nomImage;
+                            ?>
+
+                            <img src="<?= $urlFinale ?>"
+                                alt="<?= htmlspecialchars($bien['titre']) ?>"
+                                class="w-full h-48 object-cover"
+                                onerror="this.onerror=null; this.src='https://placehold.co/600x400?text=Image+Indisponible';">
+                                
                             <div class="p-6">
                                 <h3 class="text-xl font-bold mb-2"><?= htmlspecialchars($bien['titre']) ?></h3>
                                 <p class="text-gray-600 mt-2 text-sm">
