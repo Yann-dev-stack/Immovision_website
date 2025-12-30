@@ -9,6 +9,7 @@ try {
 }
 
 define('UPLOAD_PATH', '../uploads/biens/');
+
 function limiterMots($texte, $limite = 20)
 {
     $texte = strip_tags($texte); // sécurité
@@ -351,6 +352,14 @@ function limiterMots($texte, $limite = 20)
 
                         $imageExists = !empty($firstImagePath) && file_exists($fullImagePath);
                         ?>
+
+                        <?php
+                        $chemin_image = "uploads/biens/" . $bien['dossier'] . "/" . $bien['photo'];
+                        if (!file_exists($chemin_image)) {
+                            $chemin_image = "images/default-house.jpg"; // Une image de secours
+                        }
+                        ?>
+                        <img src="<?php echo $chemin_image; ?>">
 
                         <div class="bien-card relative max-w-sm w-full bg-white rounded-xl overflow-hidden shadow-md transform transition hover:scale-105"
                             data-titre="<?= strtolower(htmlspecialchars($bien['titre'])) ?>"
